@@ -139,5 +139,5 @@ ParkFlow/
 ├── .gitignore                         # Arquivos e diretórios ignorados pelo Git
 ├── index.html                         # Ponto de entrada da aplicação
 ├── ParkFlow_Apresentação_A3.pptx      # Apresentação oficial para a banca A3
-└── README_PARKFLOW.md                 # Documentação completa e guia de avaliação
+└── README.md                 # Documentação completa e guia de avaliação
 ```
