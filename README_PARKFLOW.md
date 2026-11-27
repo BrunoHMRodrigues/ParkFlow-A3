@@ -7,7 +7,7 @@ Projeto prático desenvolvido para a **Avaliação A3** da Unidade Curricular de
 ## 🔗 Acesso Rápido ao Protótipo Navegável (MVP)
 
 * **Aplicação Hospedada:** [https://parkflow-lime.vercel.app/](https://parkflow-lime.vercel.app/)
-* **Apresentação da Banca:** [`ParkFlow_Apresentação_A3.pptx`](./ParkFlow_Apresentação_A3.pptx) *(disponível na raiz deste repositório)*
+* **Apresentação da Banca:** [`ParkFlow_Apresentacao_A3.pptx`](./ParkFlow_Apresentacao_A3.pptx) *(disponível na raiz deste repositório)*
 
 > **Nota de navegação:** O sistema utiliza arquitetura híbrida (**MPA** no fluxo inicial e perfis mobile; **SPA** no painel administrativo). Sempre que a aplicação for acessada a partir da tela inicial (*Splash*), o estado de demonstração é reiniciado para os padrões de fábrica.
 
