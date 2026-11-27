@@ -1,0 +1,297 @@
+/* =========================================
+   CARTÃO DE VEÍCULO ATIVO (STATUS NO CAMPUS)
+   ========================================= */
+
+/* Coluna com os textos da esquerda */
+.vehicle-info-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0; /* Permite que o container encolha sem estourar o card */
+}
+
+/* Container principal do cartão */
+.card-vehicle {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px; /* Garante respiro entre o texto e o carrinho */
+}
+
+/* Texto do modelo e placa */
+.font-info-car {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  white-space: nowrap;      /* Se preferir que não quebre */
+  overflow: hidden;         /* Se a tela for minúscula, não estoura */
+  text-overflow: ellipsis;  /* Coloca '...' se faltar espaço */
+  max-width: 100%;
+}
+
+/* Linha superior: organiza a pílula de status à esquerda e o ícone à direita */
+.vehicle-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Badge (Pílula) de status */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+}
+
+/* Bolinha indicadora verde */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #00E676;
+  box-shadow: 0 0 8px rgba(0, 230, 118, 0.6);
+}
+
+/* Texto dentro da pílula */
+.status-text {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #E0E6ED;
+}
+
+.vehicle-icon {
+  width: 12%;
+  flex-shrink: 0;
+  align-self: center;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(56%) sepia(13%) saturate(760%) hue-rotate(178deg) brightness(91%) contrast(87%); /* Aplica a cor exata #6C82A3 */
+}
+
+/* Linha inferior: informações do veículo */
+.vehicle-card-body {
+  display: flex;
+  align-items: center;
+}
+
+.vehicle-info {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #94A3B8;
+  letter-spacing: 0.2px;
+}
+
+/* Realce sutil para a placa */
+.vehicle-plate {
+  color: #CBD5E1;
+  font-weight: 600;
+}
+
+/* =========================================
+   BANNER DE STATUS DE FLUXO (PORTARIA)
+   ========================================= */
+.flow-status-banner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  margin-top: 10px;
+  margin-bottom: 16px;
+  background: rgba(0, 230, 118, 0.07);
+  border: 1px solid rgba(0, 230, 118, 0.18);
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* Ícone do velocímetro */
+.flow-status-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Texto descritivo */
+.flow-status-text {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #D6E4EE;
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+}
+
+/* =========================================
+   CARROSSEL DE ESTACIONAMENTOS
+   ========================================= */
+.carousel-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Faixa deslizante com rolagem suave e encaixe snap */
+.carousel-track {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 14px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Oculta a barra no Firefox */
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none; /* Oculta a barra no Chrome / Safari */
+}
+
+/* Cada slide ocupa 100% da largura útil */
+.carousel-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.park-slide-card {
+  align-items: center;
+  text-align: center;
+  padding: 18px 16px;
+  gap: 12px;
+}
+
+/* Rótulo superior do cartão */
+.title-park-card {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #C3D0E4;
+}
+
+/* Destaque numérico central de vagas */
+.available-parking-spots-text {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.color-cyan {
+  color: #00E676;
+}
+
+.color-warning {
+  color: #FFAE19;
+}
+
+.color-danger {
+  color: #FF5252;
+}
+
+/* Linha com as tags/pílulas das categorias de vagas */
+.available-parking-spots-by-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Pílula individual */
+.spot-pill {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+/* Cores para campos por tipo de vaga */
+.spot-pill-normal {
+  background: rgba(0, 230, 118, 0.12);
+  border: 1px solid rgba(0, 230, 118, 0.28);
+}
+
+.spot-pill-pcd {
+  background: rgba(0, 140, 255, 0.14);
+  border: 1px solid rgba(0, 140, 255, 0.32);
+}
+
+.spot-pill-elderly {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.spot-label {
+  color: #8E9EB5;
+}
+
+.spot-value {
+  font-weight: 700;
+}
+
+.text-green { color: #00E676; }
+.text-blue { color: #4FC3F7; }
+.text-silver { color: #E0E0E0; }
+.text-warning { color: #FFAE19; }
+.text-danger { color: #FF5252; }
+
+/* Link / Botão Ver Mapa de Vagas */
+.button-map-access {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #00D2FF;
+  margin-top: 4px;
+  transition: opacity 0.2s;
+  font-family: inherit;
+}
+
+.button-map-access:hover {
+  opacity: 0.85;
+}
+
+.color-warning-btn {
+  color: #FFAE19;
+}
+
+.color-danger-btn {
+  color: #FF5252;
+}
+
+/* Bolinhas de navegação (Dots) */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.carousel-dots .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: background-color 0.25s, transform 0.25s;
+}
+
+.carousel-dots .dot.active {
+  background-color: #00D2FF;
+  transform: scale(1.3);
+}

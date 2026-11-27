@@ -1,0 +1,266 @@
+/* =========================================
+   1. ESTRUTURA E DISPOSIÇÃO DA TELA DE MAPA
+   ========================================= */
+.map-screen {
+  justify-content: space-between;
+  padding-bottom: 24px;
+}
+
+.map-badge-header {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.ia-badge {
+  background-color: #00D2FF;
+  color: #030A18;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.35);
+}
+
+/* =========================================
+   2. VIEWPORT / JANELA COM PAN & ZOOM
+   ========================================= */
+.map-viewport {
+  width: 100%;
+  height: 380px; /* Janela com altura fixa */
+  background: rgba(8, 16, 28, 0.6);
+  border: 1px solid rgba(0, 210, 255, 0.15);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden; /* O que passar da janela fica oculto */
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-viewport:active {
+  cursor: grabbing;
+}
+
+/* Camada interna que recebe o arraste e o zoom */
+.map-pan-layer {
+  position: absolute;
+  transform-origin: center center;
+  transition: transform 0.05s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================
+   3. O ESQUEMÁTICO DO ESTACIONAMENTO (CANVAS)
+   ========================================= */
+.map-canvas {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 40px;
+}
+
+/* Rótulos verticais das Ruas/Acessos */
+.street-label {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #6C82A3;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  top: 50%; /* Centraliza verticalmente em relação ao bloco */
+}
+
+.street-left {
+  left: -20px; /* Empurra para fora do bloco de vagas */
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.street-right {
+  right: -20px; /* Empurra para fora do bloco de vagas */
+  transform: translateY(-50%) rotate(90deg);
+}
+
+/* Blocos de Estacionamento */
+.parking-block {
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid rgba(142, 158, 181, 0.25);
+  border-radius: 8px;
+  background: rgba(14, 34, 61, 0.35);
+}
+
+.spot-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* TAMANHO FIXO DAS VAGAS (Travadas contra esmagamento) */
+.spot {
+  width: 48px;
+  height: 26px;
+  flex-shrink: 0; /* Impede o flexbox de encolher */
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Vaga Livre Comum (Verde Neon) */
+.spot-free {
+  border: 1.5px solid #00E676;
+  background: rgba(0, 230, 118, 0.08);
+  box-shadow: 0 0 8px rgba(0, 230, 118, 0.25);
+}
+
+.spot-free::after {
+  content: "✓";
+  color: #00E676;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+/* Vaga PcD (Azul) */
+.spot-pcd {
+  background-color: #2979FF;
+  border: 1.5px solid #2979FF;
+  box-shadow: 0 0 8px rgba(41, 121, 255, 0.35);
+}
+
+.spot-pcd svg {
+  width: 14px;
+  height: 14px;
+  fill: #FFFFFF;
+}
+
+/* Vaga Idoso (Âmbar 60+) */
+.spot-elderly {
+  background-color: #FF9100;
+  border: 1.5px solid #FF9100;
+  color: #030A18;
+  font-weight: 800;
+  font-size: 0.68rem;
+  box-shadow: 0 0 8px rgba(255, 145, 0, 0.35);
+}
+
+/* Vaga Ocupada */
+.spot-busy {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(14, 25, 42, 0.85);
+}
+
+.spot-busy svg {
+  width: 20px;
+  height: 14px;
+  fill: #4A607D;
+}
+
+.spot-busy-border {
+  border: 1.5px solid #00E676;
+  background: rgba(14, 25, 42, 0.85);
+}
+
+.spot-busy-border svg {
+  width: 20px;
+  height: 14px;
+  fill: #4A607D;
+}
+
+.spot-col-parallel .spot-busy svg {
+  transform: rotate(-90deg);
+  width: 16px;
+  height: 12px;
+}
+
+/* Corredor central com seta */
+.circulation-path {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #385273;
+  font-size: 1.3rem;
+  padding: 0 4px;
+}
+
+/* =========================================
+   4. RESUMO NUMÉRICO DAS VAGAS
+   ========================================= */
+.resume-spots {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 14px 12px;
+  background: rgba(10, 18, 30, 0.92);
+  border: 1.5px solid rgba(0, 210, 255, 0.28);
+  border-radius: 20px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.dot-free {
+  background-color: #00E676;
+  box-shadow: 0 0 8px #00E676;
+}
+
+.dot-busy {
+  background-color: #CBD5E1;
+}
+
+.dot-elderly {
+  background-color: #FF9100;
+  box-shadow: 0 0 8px #FF9100;
+}
+
+.stat-ico {
+  font-size: 0.85rem;
+  color: #2979FF;
+}
+
+.stat-num {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #8E9EB5;
+}
+
+.map-footer {
+  width: 100%;
+}

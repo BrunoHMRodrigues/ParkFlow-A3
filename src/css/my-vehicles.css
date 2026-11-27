@@ -1,0 +1,162 @@
+/* Layout compacto para caber exatamente em 375x667px */
+.vehicles-screen {
+  padding: 16px 18px 12px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.back-nav-btn {
+  background: none;
+  border: none;
+  color: #00D2FF;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+.login-title {
+  font-size: 1.4rem;
+  margin-bottom: 4px;
+}
+
+.login-subtitle {
+  font-size: 0.78rem;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+/* Lista de veículos mais baixa */
+.vehicles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.vehicle-card {
+  background: #0B1728;
+  border: 1px solid rgba(0, 210, 255, 0.2);
+  border-radius: 12px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vehicle-model {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.vehicle-plate {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.25);
+  color: #00D2FF;
+  font-family: monospace;
+}
+
+.btn-delete-vehicle {
+  background: rgba(255, 82, 82, 0.1);
+  border: 1px solid rgba(255, 82, 82, 0.25);
+  color: #FF5252;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bloco de cadastro reduzido */
+.add-vehicle-box {
+  background: rgba(14, 28, 48, 0.5);
+  border: 1px solid rgba(0, 210, 255, 0.15);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+}
+
+.box-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+.input-group {
+  margin-bottom: 8px;
+}
+
+.input-label {
+  font-size: 0.72rem;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.input-wrapper {
+  padding: 8px 12px;
+}
+
+.input-field {
+  font-size: 0.85rem;
+}
+
+.btn-primary {
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+/* Rodapé enxuto */
+.info-card {
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.info-card-text {
+  font-size: 0.7rem;
+  line-height: 1.25;
+}
+
+/* ESTILO MODAL DE EXCLUSÃO */
+.feedback-icon.danger {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 82, 82, 0.12);
+  border: 1.5px solid #FF5252;
+  box-shadow: 0 0 16px rgba(255, 82, 82, 0.25);
+}
+
+.btn-danger-confirm {
+  width: 100%;
+  background: #FF5252;
+  border: none;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(255, 82, 82, 0.35);
+  transition: opacity 0.2s;
+}
+
+.btn-danger-confirm:hover {
+  opacity: 0.9;
+}

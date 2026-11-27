@@ -1,0 +1,72 @@
+/* =========================================
+   1. ESTRUTURA E DISPOSIÇÃO DA TELA DE SPLASH
+   ========================================= */
+.splash-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   2. ANIMAÇÃO DE PREENCHIMENTO DO LOGO
+   ========================================= */
+/* Envoltório relativo para fixar as duas camadas na mesma posição */
+.logo-loader-wrapper {
+  position: relative;
+  width: 180px;
+  height: 180px;
+}
+
+/* Estilo comum aplicado a ambas as camadas sobrepostas */
+.logo-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+}
+
+/* Camada de fundo: opaca e sem cor */
+.logo-bg {
+  opacity: 0.25;
+  filter: grayscale(100%);
+}
+
+/* Camada da frente: colorida com revelação gradual */
+.logo-fill {
+  clip-path: inset(100% 0 0 0);
+  animation: fillLogo 3s ease-in-out forwards;
+}
+
+/* Animação que remove a máscara de recorte de baixo para cima */
+@keyframes fillLogo {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  100% {
+    clip-path: inset(0% 0 0 0);
+  }
+}
+
+/* =========================================
+   3. BARRA DE PROGRESSO CONECTADA AO SCRIPT
+   ========================================= */
+.progress-track {
+  width: 180px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  margin-top: 24px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: #00d2ff;
+  transition: width 0.03s linear;
+}

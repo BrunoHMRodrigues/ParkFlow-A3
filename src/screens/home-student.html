@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/home-student.css">
+    <title>ParkFlow - Home Student</title>
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <main class="app-container">
+        <header class="home-header">
+        <!--------------------------- PERFIL DO ALUNO (AVATAR + DADOS) ---------------------------->
+        <div class="user-profile">
+            <div class="avatar-ring">
+                <img src="../assets/user-avatar.png" alt="Foto de perfil" class="avatar-img" />
+            </div>
+            
+            <div class="user-info">
+                <h1 class="user-name">Olá, Lucas</h1> 
+                <span class="user-ra">RA: 202610482</span>
+            </div>
+        </div>
+
+        <!--------------------- BOTÃO DE NOTIFICAÇÕES COM BADGE DE ALERTA ------------------------->
+        <button type="button" class="btn-notifications" aria-label="Notificações">
+            <img src="../assets/bell.svg" alt="Notificações" class="bell-icon" />
+            <span class="notification-dot"></span>
+        </button>
+    </header>
+
+        <!--------------------------------- SEÇÃO VEÍCULO ATIVO ---------------------------------->
+        <span class="section-label">Veículo Ativo</span>
+        <div class="card-gray card-vehicle" onclick="OpenVehiclesWindow()" style="cursor: pointer;">
+            <div class="vehicle-info-col">
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Fora do Campus</span>
+                </div>
+                <!-- ID para podermos atualizar o texto via JavaScript -->
+                <span class="font-info-car" id="currentVehicleText">Toyota Corolla • ABC-1D23</span>
+            </div>
+            <!------------------------------ ÍCONE DO CARRO -------------------------------------->
+            <img src="../assets/car-front.png" alt="Veículo" class="vehicle-icon" />
+        </div>
+        
+        <!---------------------------- SEÇÃO FLUXO DE CARROS ------------------------------------->
+        <div class="flow-status-banner">
+            <img src="../assets/gauge.svg" alt="Velocímetro" class="flow-status-icon" />
+            <span class="flow-status-text">Entrada Principal com fluxo livre (sem filas)</span>
+        </div>
+
+        <!----------------------- SEÇÃO ESTACIONAMENTOS: CARROSSEL -------------------------------->
+        <span class="section-label">Estacionamentos Disponíveis</span>
+        <div class="carousel-container">
+            <!-- O JavaScript vai injetar os cards aqui dentro -->
+            <div class="carousel-track" id="parkingCarousel"></div>
+
+            <!-- Indicadores gerados dinamicamente -->
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+        
+
+        <!----------------------- SEÇÃO BOTÃO QR CODE -------------------------------->
+        <footer class="footer-btn">
+        <!-- Botão Abrir Janela Suspensa QR CODE -->
+        <button type="button" class="btn-primary" onclick="OpenQRCodeWindow()">
+            Abrir QR Code de Acesso
+        </button>
+    </footer>
+
+    <!----------------------- SEÇÃO BOTTOM SHEET (JANELA SUSPENSA) -------------------------------->
+    <div class="modal-overlay" id="appModalOverlay" aria-hidden="true">
+        <div class="modal-sheet" id="appModalSheet" role="dialog" aria-modal="true">
+            
+            <!-- HEADER: Traço Drag-down + Linha de Título/Fechamento + Subtítulo/Ações -->
+            <header class="sheet-header">
+                <div class="sheet-drag-handle"></div>
+                
+                <div class="sheet-header-top">
+                    <h2 class="sheet-title" id="sheetTitle">Título</h2>
+                    <button type="button" class="btn-sheet-close-icon" id="sheetCloseIcon" aria-label="Fechar">
+                        &times;
+                    </button>
+                </div>
+                
+                <!-- Espaço para subtítulo (Modal 01) ou links como "Marcar como lidas" (Modal 03) -->
+                <div class="sheet-header-sub" id="sheetHeaderSub"></div>
+            </header>
+
+            <!-- MAIN: Conteúdo Variável (QR Code, Lista de Notificações, Perfil, etc.) -->
+            <main class="sheet-main" id="sheetMain">
+                <!-- Conteúdo dinâmico injetado aqui -->
+            </main>
+
+            <!-- FOOTER: Botão Principal ("Fechar", "Sair") ou Link ("Configurar alertas") -->
+            <footer class="sheet-footer" id="sheetFooter">
+                <!-- Rodapé dinâmico injetado aqui -->
+            </footer>
+
+        </div>
+    </div>
+
+    </main>
+
+    <!-- 1. Componentes e dados globais -->
+    <script src="../components/parking-card.js"></script>
+    <script src="../components/vehicle-card.js"></script>
+    <script src="../components/modal-templates.js"></script>
+    <script src="../js/modal.js"></script>
+
+    <!-- 2. Lógica principal da tela -->
+    <script src="../js/home-student.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+/* =========================================
+   1. ESTRUTURA E DISPOSIÇÃO DO ECRA DE LOGIN
+   ========================================= */
+/* Aplica justify-content: space-between para empurrar o cabeçalho para o topo, 
+   o miolo para o centro e o aviso informativo para a base da viewport */
+.login-screen {
+  justify-content: space-between;
+}
+
+/* Espaçamento dedicado da área superior da marca */
+.login-header {
+  padding-top: 16px;
+  padding-bottom: 20px;
+}
+
+/* Espaçamento e margem da área inferior de rodapé */
+.login-footer {
+  padding-bottom: 12px;
+  margin-top: 24px;
+}
+
+/* =========================================
+   2. MIOLO CENTRAL (FORMULÁRIO E TEXTOS)
+   ========================================= */
+/* Contentor vertical que agrupa os títulos, inputs e botões de submissão */
+.login-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Título principal de boas-vindas da secção */
+.login-title {
+  font-size: 1.65rem;
+  font-weight: 700;
+  text-align: center;
+  color: #FFFFFF;
+  margin-bottom: 8px;
+}
+
+/* Mensagem descritiva de orientação com largura máxima para forçar quebra harmoniosa */
+.login-subtitle {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #8E9EB5;
+  text-align: center;
+  max-width: 250px;
+  margin: 0 auto 32px auto;
+}
+
+/* =========================================
+   3. ELEMENTOS INTERATIVOS ESPECÍFICOS
+   ========================================= */
+/* Contentor flexível para alinhar a ligação de recuperação de credenciais à direita */
+.forgot-password-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -6px;
+  margin-bottom: 28px;
+}
+
+/* =========================================
+   4. FEEDBACK VISUAL DE ERRO DE CREDENCIAIS
+   ========================================= */
+.login-error-box {
+    width: 100%;
+    background: rgba(255, 82, 82, 0.12);
+    border: 1px solid #FF5252;
+    color: #FF5252;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.input-wrapper.input-error {
+    border-color: #FF5252 !important;
+    box-shadow: 0 0 8px rgba(255, 82, 82, 0.35) !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+
+
+/* =========================================
+   4. MODAL FEEDBACK/CONFIRMAÇÃO ESQUECEU/ALTERAR SENHA
+   ========================================= */
+/* Modal de Feedback/Confirmação na própria página */
+.feedback-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 10, 24, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.feedback-modal-card {
+  background: #0B1728;
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  border-radius: 20px;
+  padding: 24px 20px;
+  width: 100%;
+  max-width: 330px;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: modalScale 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScale {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.feedback-icon {
+  font-size: 2.2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 230, 118, 0.12);
+  border: 1px solid #00E676;
+  box-shadow: 0 0 16px rgba(0, 230, 118, 0.25);
+  margin-bottom: 4px;
+}
+
+.feedback-modal-title {
+  color: #FFFFFF;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.feedback-modal-desc {
+  color: #8E9EB5;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  margin: 0 0 8px 0;
+}
+
+.hidden {
+  display: none !important;
+}

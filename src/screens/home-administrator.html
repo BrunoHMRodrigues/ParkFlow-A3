@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ParkFlow - Painel do Administrador</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/home-administrator.css" />
+    <!-- Estilos do Mapa de Vagas Compartilhado -->
+    <link rel="stylesheet" href="../css/park-map.css" />
+  </head>
+
+  <body class="admin-body">
+    <!-- 1. Header Global 100% -->
+    <header id="adminHeader" class="admin-topbar"></header>
+
+    <!-- 2. Estrutura Principal -->
+    <div class="admin-layout">
+      <!-- Barra Lateral de Navegação e Perfil -->
+      <aside id="adminSidebar" class="admin-sidebar"></aside>
+
+      <!-- Área de Conteúdo Receptora (Dashboard, Usuários, etc.) -->
+      <main id="adminMainContainer" class="admin-main"></main>
+    </div>
+
+    <!-- 3. Camada Global de Gavetas Flutuantes (Overlays/Drawers) -->
+    <div id="adminDrawersLayer"></div>
+
+    <!-- 1. Dados e Construtor do Mapa Compartilhado -->
+    <script src="../components/parking-map-data.js"></script>
+
+    <!-- 2. Componentes da Administração -->
+    <script src="../components/admin-layout-components.js"></script>
+    <script src="../components/admin-dashboard-view.js"></script>
+    <script src="../components/admin-realtime-view.js"></script>
+    <script src="../components/admin-reports-view.js"></script>
+    <script src="../components/admin-users-view.js"></script>
+    <script src="../components/admin-infra-view.js"></script>
+    <script src="../components/admin-settings-view.js"></script>
+
+    <!-- 3. Orquestrador -->
+    <script src="../js/home-administrator.js"></script>
+  </body>
+</html>

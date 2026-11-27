@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/splash.css">
+    <title>ParkFlow - Carregando</title>
+</head>
+
+<body>
+    <main class="splash-container">
+        <div class="logo-loader-wrapper">
+            <!-- 1ª camada: desbotada/transparente no fundo -->
+            <img 
+                src="../assets/ParkFlow Logo.png" 
+                alt="ParkFlow Logo Fundo" 
+                class="logo-layer logo-bg" 
+            />
+            
+            <!-- 2ª camada: colorida, animada de baixo para cima -->
+            <img 
+                src="../assets/ParkFlow Logo.png" 
+                alt="ParkFlow Logo Carregando" 
+                class="logo-layer logo-fill" 
+            />
+        </div>
+
+        <!-- Barra de progresso manipulada pelo splash.js -->
+        <div class="progress-track">
+            <div id="progress" class="progress-bar"></div>
+        </div>
+
+    </main>
+
+
+    <script src="../js/splash.js"></script>
+
+</body>
+</html>

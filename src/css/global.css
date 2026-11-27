@@ -1,0 +1,793 @@
+/* =========================================
+   0. IMPORTAÇÃO DE TIPOGRAFIA
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* =========================================
+   1. RESET E CONFIGURAÇÕES GLOBAIS
+   ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  /* Utiliza a fonte Inter como primária, com fallbacks modernos */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #FFFFFF;
+
+  /* Fundo gradiente característico do ParkFlow */
+  background:
+    radial-gradient(
+      ellipse at 50% 10%,
+      rgba(20, 75, 145, 0.65),
+      transparent 65%
+    ),
+    linear-gradient(
+      180deg,
+      #102C54 0%,
+      #071A38 55%,
+      #030A18 100%
+    );
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Contentor principal Mobile-First */
+.app-container {
+  width: 100%;
+  min-width: 320px;
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   2. TIPOGRAFIA COMPARTILHADA
+   ========================================= */
+/* Rótulos padronizados para iniciar novas secções */
+.section-label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
+}
+
+/* =========================================
+   3. IDENTIDADE VISUAL E MARCA (LOGIN)
+   ========================================= */
+.brand-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.brand-logo {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.brand-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
+}
+
+.brand-flow {
+  color: #00D2FF;
+  text-shadow: 0 0 12px rgba(0, 210, 255, 0.45);
+}
+
+/* =========================================
+   4. SISTEMA DE CARDS GENÉRICOS
+   ========================================= */
+/* Container base cinzento/translúcido (adota a largura do elemento pai) */
+.card-gray {
+  width: 100%;
+  padding: 16px;
+  background: rgba(14, 34, 61, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Cartão de aviso com borda translúcida e ícone à esquerda */
+.info-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: rgba(12, 30, 56, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+}
+
+.info-card-text {
+  font-size: 0.75rem;
+  line-height: 1.35;
+  color: #8E9EB5;
+}
+
+/* Espaçamento interno mais compacto (ideal para cards lado a lado ou avisos) */
+.card-sm {
+  padding: 12px;
+}
+
+/* Modificador Ciano (Destaque Principal / Vagas) */
+.card-cyan {
+  border-color: rgba(0, 210, 255, 0.45);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 210, 255, 0.08) 0%,
+    rgba(14, 34, 61, 0.75) 100%
+  );
+  box-shadow: 0 0 20px rgba(0, 210, 255, 0.08);
+}
+
+/* Modificador Verde (Acesso Liberado / Veículo Ativo / Sucesso) */
+.card-green {
+  border-color: rgba(0, 230, 118, 0.55);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 230, 118, 0.08) 0%,
+    rgba(14, 34, 61, 0.75) 100%
+  );
+  box-shadow: 0 0 20px rgba(0, 230, 118, 0.12);
+}
+
+/* Modificador Laranja/Âmbar (Avisos / Regra Anti-Passback) */
+.card-warning {
+  border-color: rgba(255, 171, 0, 0.5);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 171, 0, 0.08) 0%,
+    rgba(14, 34, 61, 0.75) 100%
+  );
+  box-shadow: 0 0 20px rgba(255, 171, 0, 0.08);
+}
+
+/* Modificador Vermelho (Lotação / Bloqueio / Falha) */
+.card-danger {
+  border-color: rgba(255, 82, 82, 0.5);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 82, 82, 0.08) 0%,
+    rgba(14, 34, 61, 0.75) 100%
+  );
+  box-shadow: 0 0 20px rgba(255, 82, 82, 0.08);
+}
+
+/* Modificador Tracejado (Adicionar Novo Item / Ação Secundária) */
+.card-dashed {
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   5. BOTÕES (PRIMÁRIOS, LINKS E AÇÕES GERAIS)
+   ========================================= */
+/* Botão principal (Call to Action) com efeito degradê */
+.btn-primary {
+  width: 100%;
+  height: 52px;
+  background: linear-gradient(90deg, #00D2FF 0%, #00B4D8 100%);
+  border: none;
+  border-radius: 26px;
+  color: #2a2a2c;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 210, 255, 0.35);
+  transition: transform 0.1s, filter 0.2s;
+  margin-top: auto; /* Empurra o botão suavemente para o rodapé do container */
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+  filter: brightness(0.95);
+}
+
+/* Botão sem fundo que assume aparência de link (ciano) */
+.btn-link {
+  background: none;
+  border: none;
+  color: #00D2FF;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  transition: color 0.2s, text-decoration 0.2s;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+  color: #70E1FF;
+}
+
+/* Contentor padrão para botões de rodapé */
+.footer-btn {
+  width: 90%;
+  padding:12px;
+  margin:auto;
+}
+
+/* =========================================
+   6. CAMPOS DE FORMULÁRIO E INPUTS (LOGIN)
+   ========================================= */
+/* Container vertical que engloba rótulo e campo */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+/* Rótulo superior do campo */
+.input-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #A9B7D0;
+}
+
+/* Envoltório relativo para fixação dos ícones laterais */
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Ícone fixo à esquerda (decorativo) */
+.input-icon-left {
+  position: absolute;
+  left: 14px;
+  color: #6C82A3;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Botão interativo de ícone à direita (ex: ver senha) */
+.input-icon-right {
+  position: absolute;
+  right: 14px;
+  color: #6C82A3;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+/* Caixa de texto com preenchimento lateral para não encavalar com os ícones */
+.input-field {
+  width: 100%;
+  height: 52px;
+  padding: 0 44px 0 44px;
+  background: rgba(14, 34, 61, 0.65);
+  border: 1px solid rgba(0, 180, 255, 0.22);
+  border-radius: 12px;
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-field::placeholder {
+  color: #556B8A;
+}
+
+.input-field:focus {
+  border-color: #00D2FF;
+  box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.15);
+}
+
+/* =========================================
+   7. JANELA SUSPENSA (MODAL / BOTTOM SHEET)
+   ========================================= */
+/* Fundo que escurece o resto do ecrã */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(3, 10, 24, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Contentor que desliza de baixo para cima */
+.modal-sheet {
+  width: 100%;
+  max-width: 430px;
+  background: rgba(14, 34, 61, 0.94);
+  border-top: 1px solid rgba(0, 210, 255, 0.25);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px 28px 0 0;
+  padding: 12px 20px 24px 20px;
+  box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  transform: translateY(100%);
+  transition: transform 0.32s cubic-bezier(0.18, 0.89, 0.32, 1);
+}
+
+.modal-overlay.active .modal-sheet {
+  transform: translateY(0);
+}
+
+/* Elementos Estruturais Internos do Modal */
+.sheet-drag-handle {
+  width: 42px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.22);
+  border-radius: 4px;
+  margin: 0 auto 12px auto;
+}
+
+.sheet-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.sheet-header-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 32px;
+}
+
+.sheet-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+/* Botão circular de fechar (✕) no Canto superior direito */
+.btn-sheet-close-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #CBD5E1;
+  font-size: 1.2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-sheet-close-icon:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #FFFFFF;
+}
+
+.sheet-header-sub {
+  width: 100%;
+  margin-top: 6px;
+  text-align: center;
+}
+
+/* Main com rolagem independente se o conteúdo passar da tela */
+.sheet-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: none; /* Oculta a barra nativa */
+}
+
+.sheet-main::-webkit-scrollbar {
+  display: none;
+}
+
+.sheet-footer {
+  width: 100%;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Botão alongado padrão no rodapé da janela suspensa */
+.btn-modal-close {
+  width: 100%;
+  height: 48px;
+  background: rgba(0, 210, 255, 0.05);
+  border: 1.5px solid rgba(0, 210, 255, 0.45);
+  border-radius: 24px;
+  color: #00D2FF;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Efeito ao passar o cursor */
+.btn-modal-close:hover {
+  background: rgba(0, 210, 255, 0.15);
+  border-color: #00D2FF;
+}
+
+/* Efeito ao pressionar/tocar no mobile */
+.btn-modal-close:active {
+  transform: scale(0.98);
+  background: rgba(0, 210, 255, 0.22);
+}
+
+/* Modificador de perigo para o botão de Logout */
+.btn-modal-close.danger {
+  color: #FF5252;
+  border-color: rgba(255, 82, 82, 0.45);
+  background: rgba(255, 82, 82, 0.05);
+}
+
+.btn-modal-close.danger:hover {
+  background: rgba(255, 82, 82, 0.15);
+  border-color: #FF5252;
+}
+
+.btn-modal-close.danger:active {
+  background: rgba(255, 82, 82, 0.22);
+}
+
+/* =========================================
+   8. CONTEÚDO DO MODAL: AVISOS E NOTIFICAÇÕES
+   ========================================= */
+/* Ações do cabeçalho de avisos */
+.notice-header-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-top: 2px;
+  margin-bottom: 8px;
+}
+
+.notice-badge {
+  background-color: #FF5252;
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Lista vertical de avisos */
+.notices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* Estrutura base do card de aviso */
+.notice-card {
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: rgba(16, 26, 44, 0.7);
+  box-sizing: border-box;
+}
+
+/* Cabeçalho interno do aviso (Ícone + Títulos) */
+.notice-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.notice-icon {
+  font-size: 1.45rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.notice-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.notice-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.notice-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* Descrição e rodapé com tempo */
+.notice-desc {
+  font-size: 0.82rem;
+  line-height: 1.35;
+  color: #C3D0E4;
+  margin: 0;
+  padding-left: 34px; /* Alinha com o texto após o ícone */
+}
+
+.notice-time {
+  align-self: flex-end;
+  font-size: 0.74rem;
+  color: #8E9EB5;
+  margin-top: 2px;
+}
+
+/* --- Tema 1: Alerta / Crítico (Laranja Avermelhado) --- */
+.notice-danger {
+  border: 1.5px solid #FF5A36;
+  box-shadow: 0 0 14px rgba(255, 90, 54, 0.28);
+}
+.notice-danger .notice-category {
+  color: #FF7B59;
+}
+
+/* --- Tema 2: Operacional (Ciano / Azul) --- */
+.notice-cyan {
+  border: 1.5px solid #00D2FF;
+  box-shadow: 0 0 14px rgba(0, 210, 255, 0.28);
+}
+.notice-cyan .notice-category {
+  color: #00D2FF;
+}
+
+/* --- Tema 3: Geral (Verde Esmeralda) --- */
+.notice-green {
+  border: 1.5px solid #00E676;
+  box-shadow: 0 0 14px rgba(0, 230, 118, 0.28);
+}
+.notice-green .notice-category {
+  color: #00E676;
+}
+
+.btn-mark-read {
+  background: none;
+  border: none;
+  color: #00D2FF;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+}
+
+/* Link inferior de configuração */
+.btn-notice-config {
+  background: none;
+  border: none;
+  color: #8E9EB5;
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 6px;
+  transition: color 0.2s;
+}
+
+.btn-notice-config:hover {
+  color: #FFFFFF;
+}
+
+/* =========================================
+   8. CONTEÚDO DO MODAL: GESTÃO DE VEÍCULOS
+   ========================================= */
+.vehicles-modal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.vehicle-select-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background-color: rgba(16, 26, 44, 0.7);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.vehicle-select-card:active {
+  transform: scale(0.98);
+}
+
+/* Card Ativo: Borda Verde Esmeralda com Glow */
+.vehicle-select-card.active {
+  border-color: #00E676;
+  box-shadow: 0 0 16px rgba(0, 230, 118, 0.28), inset 0 0 10px rgba(0, 230, 118, 0.05);
+}
+
+.vehicle-thumb {
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: #0B1524;
+}
+
+.vehicle-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+}
+
+.vehicle-name {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.vehicle-plate {
+  font-size: 0.8rem;
+  color: #8E9EB5;
+}
+
+.vehicle-status-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #00E676;
+  margin-top: 2px;
+}
+
+/* =========================================
+   8. CABEÇALHO DA HOME (PERFIL & NOTIFICAÇÕES)
+   ========================================= */
+.home-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px; /* antes estava 24px */
+}
+
+/* Lado esquerdo: Avatar e Dados */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Anel com efeito néon à volta do avatar */
+.avatar-ring {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  padding: 2px;
+  border: 2px solid #00D2FF;
+  box-shadow: 0 0 14px rgba(0, 210, 255, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Identificação do Aluno */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.user-ra {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #8E9EB5;
+}
+
+/* Lado direito: Botão do sino com dot indicador */
+.btn-notifications {
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bell-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Ponto ciano de nova notificação ativa */
+.notification-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 7px;
+  height: 7px;
+  background-color: #00D2FF;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #00D2FF;
+}

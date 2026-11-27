@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/park-map.css" />
+  <title>ParkFlow - Mapa 2D de Vagas</title>
+</head>
+
+<body>
+  <main class="app-container map-screen">
+
+    <!-- Indicador de atualização por IA -->
+    <div class="map-badge-header">
+      <span class="ia-badge" id="mapIaBadge">IA atualizada há 4s</span>
+    </div>
+
+    <!-- Viewport (Janela de Visualização) -->
+    <section class="map-viewport" id="mapViewport">
+      <!-- Camada arrastável e com escala -->
+      <div class="map-pan-layer" id="mapPanLayer">
+        <div class="map-canvas" id="mapCanvas">
+          <!-- O JavaScript injeta o mapa aqui -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Resumo numérico inferior -->
+    <section class="resume-spots" id="resumeSpots">
+      <!-- O JavaScript injeta o resumo aqui -->
+    </section>
+
+    <!-- Botão Voltar -->
+    <footer class="map-footer">
+      <button type="button" class="btn-modal-close" onclick="handleBack()">
+        Voltar
+      </button>
+    </footer>
+  </main>
+
+  <!-- 1. Componentes e dados do mapa -->
+  <script src="../components/parking-map-data.js"></script>
+
+  <!-- 2. Controlador da página -->
+  <script src="../js/park-map.js"></script>
+</body>
+</html>
